@@ -29,7 +29,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "Crawler.Product{" +
                 "productId=" + productId +
                 ", productDescription='" + productDescription + '\'' +
                 ", productName='" + productName + '\'' +
