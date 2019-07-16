@@ -21,11 +21,6 @@ public class MySQLAccess {
 
             // Statements allow to issue SQL queries to the database
             statement = connect.createStatement();
-            // Result set get the result of the SQL query
-//            resultSet = statement
-//                    .executeQuery("select * from feedback.comments");
-//            writeResultSet(resultSet);
-
             // PreparedStatements can use variables and are more efficient
             preparedStatement = connect
                     .prepareStatement("INSERT INTO `shopping_cart`.`product` " +
@@ -41,40 +36,12 @@ public class MySQLAccess {
             preparedStatement.setDouble(6,product.getProductPrice());
 
             preparedStatement.executeUpdate();
-
-//            preparedStatement = connect
-//                    .prepareStatement("SELECT myuser, webpage, datum, summary, COMMENTS from feedback.comments");
-//            resultSet = preparedStatement.executeQuery();
-//            writeResultSet(resultSet);
-//
-
         } catch (Exception e) {
             throw e;
         } finally {
             close();
         }
 
-    }
-
-
-    private void writeResultSet(ResultSet resultSet) throws SQLException {
-        // ResultSet is initially before the first data set
-        while (resultSet.next()) {
-            // It is possible to get the columns via name
-            // also possible to get the columns via the column number
-            // which starts at 1
-            // e.g. resultSet.getSTring(2);
-            String user = resultSet.getString("myuser");
-            String website = resultSet.getString("webpage");
-            String summary = resultSet.getString("summary");
-            Date date = resultSet.getDate("datum");
-            String comment = resultSet.getString("comments");
-            System.out.println("User: " + user);
-            System.out.println("Website: " + website);
-            System.out.println("summary: " + summary);
-            System.out.println("Date: " + date);
-            System.out.println("Comment: " + comment);
-        }
     }
 
     // You need to close the resultSet
